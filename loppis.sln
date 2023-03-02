@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32804.467
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "loppis", "loppis\loppis.csproj", "{57829026-2E12-45AA-83B7-FAB11CA65418}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dataaccess", "dataaccess\dataaccess.csproj", "{18167190-B495-4C2D-A6E3-6D4F0DDE74AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{57829026-2E12-45AA-83B7-FAB11CA65418}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57829026-2E12-45AA-83B7-FAB11CA65418}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57829026-2E12-45AA-83B7-FAB11CA65418}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57829026-2E12-45AA-83B7-FAB11CA65418}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18167190-B495-4C2D-A6E3-6D4F0DDE74AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18167190-B495-4C2D-A6E3-6D4F0DDE74AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18167190-B495-4C2D-A6E3-6D4F0DDE74AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18167190-B495-4C2D-A6E3-6D4F0DDE74AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F7A18812-5D66-4DE6-A92A-5FD883EB582C}
+	EndGlobalSection
+EndGlobal
