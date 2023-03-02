@@ -11,27 +11,8 @@
         x:Class="loppis.MainWindow"
         x:CompileBindings="True"
         x:DataType="vm:SalesViewModel"
+        x:Name="TheMainWindow"
         Title="LoppisAppen" WindowStartupLocation="CenterScreen" WindowState="Maximized" Background="#FF222020" Initialized="Window_Initialized">
-  <Window.DataTemplates>
-    <DataTemplate DataType="{x:Type dam:SaleEntry}">
-      <DockPanel HorizontalAlignment="Right" Focusable="False">
-        <TextBlock Text="{Binding SellerIdListText}" FontSize="32" Focusable="False" FontFamily="Consolas" FontWeight="Bold"/>
-        <TextBlock x:Name="Spaces" Text=" " FontSize="32" Focusable="False" FontFamily="Consolas" FontWeight="Bold"/>
-        <TextBlock Text="Pris: " FontSize="32" Focusable="False"  FontFamily="Consolas" FontWeight="Bold"/>
-        <TextBlock x:Name="Price" Text="{Binding PriceListText}" FontSize="32" Focusable="False" FontFamily="Consolas" FontWeight="Bold"/>
-      </DockPanel>
-    </DataTemplate>
-    <!--<DataTemplate x:Key="SalesTemplate">
-      <DockPanel HorizontalAlignment="Right" Focusable="False">
-        <TextBlock Text="Senaste köp:" FontSize="18" Focusable="False" FontFamily="Consolas" FontStyle="Italic"/>
-        <TextBlock x:Name="Spaces" Text=" " FontSize="18" Focusable="False" FontFamily="Consolas" FontStyle="Italic"/>
-        <TextBlock Text="{Binding SumTotal}" FontSize="18" Focusable="False" FontFamily="Consolas" FontStyle="Italic"/>
-        <TextBlock x:Name="Spaces2" Text="kr " FontSize="18" Focusable="False" FontFamily="Consolas" FontStyle="Italic"/>
-        <TextBlock Text="{Binding TimestampString}" FontSize="18" Focusable="False"  FontFamily="Consolas" FontStyle="Italic"/>
-        <TextBlock x:Name="Price" Text="{Binding PriceListText}" FontSize="32" Focusable="False" FontFamily="Consolas" FontWeight="Bold"/>
-      </DockPanel>
-    </DataTemplate>-->
-  </Window.DataTemplates>
   <Window.Styles>
     <Style Selector="TextBox.leftmargin">
       <Setter Property="Margin" Value="50,0,0,0"/>
@@ -82,13 +63,13 @@
         <Button Classes="colored margins" Background="BlueViolet" Width="150" Height="150" FontSize="25" VerticalContentAlignment="Center"
                 HorizontalContentAlignment="Center" Foreground="WhiteSmoke" Content="_Vykort" Focusable="False" Command="{Binding ExecuteCardCommand}">
         </Button>
-        <Button Classes="colored margins" Background="Orange" Width="150" Height="150" FontSize="25" VerticalContentAlignment="Center" 
+        <Button Classes="colored margins" Background="Orange" Width="150" Height="150" FontSize="25" VerticalContentAlignment="Center"
                 HorizontalContentAlignment="Center" Foreground="WhiteSmoke" Content="_Kasse" Focusable="False" Command="{Binding ExecuteBagCommand}">
         </Button>
-        <Button Classes="colored margins green-colored" Background="Green" Width="150" Height="150" FontSize="25" VerticalContentAlignment="Center" 
+        <Button Classes="colored margins green-colored" Background="Green" Width="150" Height="150" FontSize="25" VerticalContentAlignment="Center"
                 HorizontalContentAlignment="Center" Foreground="WhiteSmoke" Content="_Avrunda" Focusable="False" Command="{Binding RoundUpCommand}">
         </Button>
-        <Button Classes="colored margins red-colored" Background="Red" Width="150" Height="150" FontSize="25" VerticalContentAlignment="Center" 
+        <Button Classes="colored margins red-colored" Background="Red" Width="150" Height="150" FontSize="25" VerticalContentAlignment="Center"
                 HorizontalContentAlignment="Center" Foreground="WhiteSmoke" Content="_Rensa" Focusable="False" Command="{Binding ExecuteClearCommand}">
         </Button>
       </StackPanel>
@@ -103,9 +84,34 @@
           <RowDefinition Height="4*"/>
           <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <ListBox Grid.Row="0" x:Name="items" VerticalAlignment="Stretch" BorderThickness="0" Items="{Binding ItemList}" Focusable="False"/>
+        <ListBox Grid.Row="0" x:Name="items" VerticalAlignment="Stretch" BorderThickness="0" Items="{Binding ItemList}" Focusable="False">
+          <ListBox.DataTemplates>
+            <DataTemplate DataType="{x:Type dam:SaleEntry}">
+              <DockPanel HorizontalAlignment="Right" Focusable="False">
+                <TextBlock Text="{Binding SellerIdListText}" FontSize="32" Focusable="False" FontFamily="Consolas" FontWeight="Bold"/>
+                <TextBlock x:Name="Spaces" Text=" " FontSize="32" Focusable="False" FontFamily="Consolas" FontWeight="Bold"/>
+                <TextBlock Text="Pris: " FontSize="32" Focusable="False"  FontFamily="Consolas" FontWeight="Bold"/>
+                <TextBlock x:Name="Price" Text="{Binding PriceListText}" FontSize="32" Focusable="False" FontFamily="Consolas" FontWeight="Bold"/>
+              </DockPanel>
+            </DataTemplate>
+          </ListBox.DataTemplates>
+        </ListBox>
         <!--ItemTemplate="{StaticResource EntryItemTemplate}" HorizontalContentAlignment="Stretch" PreviewMouseDoubleClick="items_PreviewMouseDoubleClick" MouseLeftButtonUp="items_MouseLeftButtonUp"-->
-        <!--ListBox Grid.Row="1" x:Name="lastSales" VerticalAlignment="Stretch" BorderThickness="0" ItemsSource="{Binding LastSalesList}" ItemTemplate="{StaticResource SalesTemplate}" HorizontalContentAlignment="Stretch" Focusable="False" Background="LightGray" MouseLeftButtonUp="lastSales_MouseLeftButtonUp"/>-->
+        <ListBox Grid.Row="1" x:Name="lastSales" VerticalAlignment="Stretch" BorderThickness="0" Items="{Binding LastSalesList}"  Focusable="False" Background="LightGray">
+          <ListBox.DataTemplates>
+            <DataTemplate DataType="{x:Type dam:Sale}">
+              <DockPanel HorizontalAlignment="Right" Focusable="False">
+                <TextBlock Text="Senaste köp:" FontSize="18" Focusable="False" FontFamily="Consolas" FontStyle="Italic"/>
+                <TextBlock x:Name="Spaces" Text=" " FontSize="18" Focusable="False" FontFamily="Consolas" FontStyle="Italic"/>
+                <TextBlock Text="{Binding SumTotal}" FontSize="18" Focusable="False" FontFamily="Consolas" FontStyle="Italic"/>
+                <TextBlock x:Name="Spaces2" Text="kr " FontSize="18" Focusable="False" FontFamily="Consolas" FontStyle="Italic"/>
+                <TextBlock Text="{Binding TimestampString}" FontSize="18" Focusable="False"  FontFamily="Consolas" FontStyle="Italic"/>
+                <!--<TextBlock x:Name="Price" Text="{Binding PriceListText}" FontSize="32" Focusable="False" FontFamily="Consolas" FontWeight="Bold"/>-->
+              </DockPanel>
+            </DataTemplate>
+          </ListBox.DataTemplates>
+        </ListBox>
+        <!--ItemTemplate="{StaticResource SalesTemplate}" HorizontalContentAlignment="Stretch" MouseLeftButtonUp="lastSales_MouseLeftButtonUp"-->
       </Grid>
       <Grid Grid.Row ="1">
         <Grid.RowDefinitions>
@@ -119,12 +125,7 @@
 
         <Label x:Name="totalLabel"  BorderThickness="0" Height="100" Background="white" Grid.Column="0" Grid.Row="0" Content="Summa" VerticalContentAlignment="Bottom" FontSize="34"></Label>
         <Label x:Name="total"  BorderThickness="0" Height="100" Background="white" Grid.Column="1" Grid.Row="0" Content="{Binding SumTotal}" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" FontSize="80"></Label>
-        <Button x:Name="newSeller"  BorderThickness="0" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Content="Klar" Height="100" Background="Green" FontSize="34">
-          <!--<Behaviors:Interaction.Triggers>
-            <Behaviors:EventTrigger EventName="Click">
-              <Behaviors:InvokeCommandAction Command="{Binding SaveToFileCommand}"/>
-            </Behaviors:EventTrigger>
-          </Behaviors:Interaction.Triggers>-->
+        <Button x:Name="newSeller"  BorderThickness="0" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Content="Klar" Height="100" Background="Green" FontSize="34" Command="{Binding SaveToFileCommand}">
         </Button>
       </Grid>
     </Grid>

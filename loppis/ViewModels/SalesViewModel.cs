@@ -34,9 +34,11 @@ public partial class SalesViewModel : ObservableObject
     private SaleEntry currentEntry;
 
     [ObservableProperty]
+    [NotifyCanExecuteChangedFor(nameof(SaveToFileCommand))]
     private int sumTotal;
 
     [ObservableProperty]
+    [NotifyCanExecuteChangedFor(nameof(SaveToFileCommand))]
     private ObservableCollection<SaleEntry> itemList;
 
     [ObservableProperty]
@@ -49,6 +51,7 @@ public partial class SalesViewModel : ObservableObject
     private Brush cashierBackground;
 
     [ObservableProperty]
+    [NotifyCanExecuteChangedFor(nameof(SaveToFileCommand))]
     private string cashier;
 
     [ObservableProperty]
@@ -76,7 +79,7 @@ public partial class SalesViewModel : ObservableObject
 
         if (lifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            desktop.MainWindow.Close();
+            desktop.Shutdown(0);
         }
     }
 

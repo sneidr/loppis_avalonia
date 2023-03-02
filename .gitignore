@@ -1,0 +1,26 @@
+# Visual Studio 2015 cache/options directory
+.vs
+
+# Builds
+obj
+bin
+
+# Data
+Data
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Backups
+*.bak
+
+# Test Results
+TestResults
+
+# Mail
+mailtexter
+
+# Config
+config
